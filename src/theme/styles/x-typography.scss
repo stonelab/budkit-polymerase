@@ -1,0 +1,109 @@
+
+/* Material Design Typography */
+
+
+
+// Typography
+// Typographic Scale & Basic Styles
+// -------------------------
+.display-4 {
+  @apply(--paper-font-display4);
+}
+
+.display-3 {
+  @apply(--paper-font-display3);
+}
+
+.display-2 {
+  @apply(--paper-font-display2);
+}
+
+.display-1 {
+  @apply(--paper-font-display1);
+}
+
+.headline {
+  @apply(--paper-font-headline);
+}
+
+.title {
+  @apply(--paper-font-title);
+}
+
+.subhead{
+  @apply(--paper-font-suhead);
+}
+
+
+.body-2 {
+  @apply(--paper-font-body2);
+}
+
+.body-1 {
+  @apply(--paper-font-body1);
+}
+
+.caption {
+  @apply(--paper-font-caption);
+}
+
+.label {
+  @apply(--paper-font-label);
+}
+
+.menu {
+  @apply(--paper-font-menu);
+}
+
+.button {
+  @apply(--paper-font-button);
+}
+
+// Font-size for device
+@media only screen and (max-width: 960px) {
+  .subhead-2 {
+
+  }
+  .subhead-1 {
+
+  }
+  .body-2 {
+
+  }
+  .body-1 {
+
+  }
+  .menu {
+
+  }
+}
+
+.display-4,
+.display-3,
+.display-2,
+.display-1 {
+
+}
+
+.headline,
+.title,
+.subhead-2,
+.subhead-1,
+.body-2,
+.body-1,
+.caption,
+.label,
+.menu,
+.button {
+
+}
+
+
+a, a:hover, a:focus {
+  color: var(--dark-primary-color);
+  text-decoration: none;
+
+  & .material-icons {
+    vertical-align: middle;
+  }
+}

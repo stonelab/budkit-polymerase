@@ -1,0 +1,24 @@
+<dom-module id="x-app-routes">
+    <template>
+
+        <app-route
+                route="{{route}}"
+                pattern="/:view"
+                data="{{routeData}}"
+                tail="{{subroute}}">
+        </app-route>
+
+    </template>
+
+    <script>
+        Polymer({
+            is: 'x-app-routes',
+            properties : {
+            },
+            ready: function(){
+                //console.log(this.route)
+            }
+        })
+    </script>
+
+</dom-module>

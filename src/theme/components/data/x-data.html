@@ -1,0 +1,48 @@
+<dom-module id="x-data">
+    <template attributes="json">
+        <content json="{{json}}"></content>
+    </template>
+
+    <script>
+
+            'use strict';
+
+            Polymer({
+                is: 'x-data',
+                properties: {
+                    page : {
+                        type: Object,
+                        value : {
+                            location: {},
+                            sublocation: {}
+                        },
+                        notify: true
+                    },
+                    json: {
+                        observer: '_dataLoaded',
+                        type: Object
+                    }
+                },
+
+                _pageLoaded: function( page ){
+                    //console.log(this.page);
+                },
+                /**
+                 * Handler called when the path or queryParams change.
+                 *
+                 * @param  {!string} path The serialized path through the route tree.
+                 * @param  {Object} queryParams A set of key/value pairs that are
+                 * universally accessible to branches of the route tree.
+                 */
+                _dataLoaded: function ( json ) {
+
+                    if(json){
+                        this.set("page.data", json);
+                        // To prevent all data from being dumped in page source
+                        // Comment out this line if you need to debug, or pass the data to the console.
+                        this.removeAttribute('json');
+                    }
+                }
+            });
+    </script>
+</dom-module>

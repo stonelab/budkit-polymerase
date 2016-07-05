@@ -1,0 +1,79 @@
+<!--
+1. Look inside {{stories}}
+    1a. Are there any stories to display?
+        1b. If Yes display and skip to 2
+        1c. If No, use core ajax to grab /member/timeline stories and update {{stories}}, then display
+2. Subscribe to the /timeline websocket channel for real time updates (use a toggle switch)
+
+-->
+<link rel="import" href="x-data-stream-style.html">
+<dom-module id="x-data-stream">
+    <template>
+        <style include="x-data-stream-style"></style>
+
+        <div id="stream" class="x-data-stream-content x-data-stream-grid cover"></div>
+
+
+        <content id="repeater"></content>
+
+
+    </template>
+    <script>
+        Polymer({
+            is: 'x-data-stream',
+            behaviors: [
+                Polymer.Templatizer
+            ],
+            properties : {
+                streamLoaded: {
+                    type: Boolean,
+                    value: false
+                },
+                stream : {
+                    type : Object,
+                    observer: '_streamObserver',
+                    notify: true
+                }
+            },
+            _streamObserver: function(){
+
+                if(this.stream && !this.streamLoaded) {
+
+                    var repeated = this.getContentChildren('#repeater')[0],
+                            stream = this._toArray(this.stream)
+
+                    if(stream.length > 0 ){
+                        this.streamLoaded = true
+                    }
+
+                    for (var i = 0; i < stream.length; i++) {
+
+                        this.templatize(repeated);
+
+                        var toInsert = document.createElement('div');
+
+                        var _repeated = this.stamp({item: stream[i]})
+                        _repeated.item = stream[i];
+
+                        toInsert.appendChild(_repeated.root);
+
+                        Polymer.dom(toInsert).classList.add('x-data-stream-item');
+                        Polymer.dom(this.$.stream).appendChild(toInsert);
+                    }
+
+                    //this.streamLoaded = true
+                }
+            },
+            _toArray: function(obj) {
+                if(!obj) return null;
+
+                return Object.keys(obj).map(function(key) {
+                    return {
+                        name: key,
+                        value: obj[key]
+                    };
+                });
+            }
+        });
+    </script>
+</dom-module>

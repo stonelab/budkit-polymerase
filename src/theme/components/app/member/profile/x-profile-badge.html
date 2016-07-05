@@ -1,0 +1,38 @@
+<dom-module id="x-profile-badge">
+    <template>
+        <style include="iron-flex iron-flex-alignment">
+            :host{
+                display: inline;
+                cursor: pointer;
+                @apply(--layout-horizontal);
+                @apply(--layout-wrap);
+                @apply(--layout-top);
+                margin-bottom: 20px;
+            }
+            .handle{
+                font-size: 80%;
+                color: var(--paper-grey-100);
+            }
+            iron-image{
+                border-radius: 50%;
+            }
+        </style>
+        <template is="dom-if" if="{{profile.user_name_id}}">
+            <div class="mini-profile-picture horizontal layout flex">
+                 <iron-image  width="{{width}}" height="{{height}}" preload src$="/file/{{profile.user_photo}}/{{width}}x{{height}}" ></iron-image>
+            </div>
+            <div class="mini-profile flex-3" >
+                <span class="full name">{{profile.user_first_name}} {{profile.user_last_name}}</span>
+                <span class="handle">@{{profile.user_name_id}}</span>
+            </div>
+        </template>
+    </template>
+    <script>
+        Polymer({
+            is : 'x-profile-badge',
+            ready: function(){
+                //console.log(this.profile);
+            }
+        })
+    </script>
+</dom-module>

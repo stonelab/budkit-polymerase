@@ -1,0 +1,192 @@
+<link rel="import" href="../../../vendor/polymer/polymer.html">
+<link rel="import" href="../../../vendor/paper-dialog-behavior/paper-dialog-behavior.html">
+<link rel="import" href="../../../vendor/paper-dialog-behavior/paper-dialog-shared-styles.html">
+
+
+<dom-module id="x-publisher">
+    <template>
+        <style include="paper-dialog-shared-styles x-typography">
+            :host{
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                padding: 0;
+                margin: 0;
+                background: white;
+                overflow-y: auto;
+            }
+
+            paper-toolbar {
+                margin: 0px;
+                padding: 0px;
+                --paper-toolbar-background : white;
+                --paper-toolbar-color: #313131;
+            }
+
+            x-logo{
+                --x-logo : {
+                    fill: #ECECEC;
+                }
+            }
+
+            .content{
+                padding: 0 15px;
+                counter-reset: section;                    /* Set the section counter to 0 */
+            }
+
+            .field {
+                margin: auto;
+                position: relative;
+                min-height: 100px;
+                --paper-input-container-underline:{
+                    display: none;
+                };
+
+                --paper-input-container-input: {
+                    /*padding: 10px 0;*/
+                }
+            }
+
+            .field::before {
+                counter-increment: section;                /* Increment the section counter*/
+                content: "Q" counter(section) "."; /* Display the counter */
+
+                display: table-cell;
+                position: absolute;
+                top: 15px;
+                left: -70px;
+                font-size: 18px;
+                //border: 1px solid #ccc;
+                color: #ccc;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                vertical-align: middle;
+                line-height: 50px;
+                border-radius: 50%;
+
+            }
+
+
+            .help-block{
+                display: block;
+                color: #ccc;
+            }
+
+
+            paper-input-container {
+
+                --paper-input-container-underline-focus : {
+                    display: none;
+                }
+            }
+
+            paper-input-container:hover{
+                --paper-input-container : {
+                    border : 1px dashed #CCC;
+                }
+            }
+
+            /* desktop-medium */
+            @media all and (min-width: 841px) {
+                .field{
+                    max-width: 70%;
+                }
+            }
+            /* desktop-xlarge */
+            @media all and (min-width: 1601px) and (max-width: 1920px) {
+
+                .field{
+                    max-width: 50%;
+                }
+
+            }
+        </style>
+
+        <paper-toolbar>
+            <x-logo class="top flex"></x-logo>
+            <paper-icon-button icon="icons:clear" dialog-dismiss></paper-icon-button>
+        </paper-toolbar>
+
+        <div class="content">
+
+            <form is="iron-form" id="form" method="post" action="/form/handler">
+
+                <paper-input-container class="field">
+                    <label label>What is your <strong>First Name</strong>?</label>
+                    <input is="iron-input">
+                    <span class="help-block">And if we wanted to have a little help block here?</span>
+                </paper-input-container>
+
+                <paper-input-container class="field">
+                    <label label>What is your <strong>First Name</strong>?</label>
+                    <input is="iron-input">
+                    <span class="help-block">And if we wanted to have a little help block here?</span>
+                </paper-input-container>
+
+                <paper-input-container class="field">
+                    <label label>What is your <strong>First Name</strong>?</label>
+                    <input is="iron-input">
+                    <span class="help-block">And if we wanted to have a little help block here?</span>
+                </paper-input-container>
+
+                <paper-input-container class="field">
+                    <label label>What is your <strong>First Name</strong>?</label>
+                    <input is="iron-input">
+                    <span class="help-block">And if we wanted to have a little help block here?</span>
+                </paper-input-container>
+
+                <paper-input-container class="field">
+                    <label label>What is your <strong>First Name</strong>?</label>
+                    <input is="iron-input">
+                    <span class="help-block">And if we wanted to have a little help block here?</span>
+                </paper-input-container>
+
+                <paper-input-container  class="field">
+                    <iron-autogrow-textarea placeholder="Why can't i have a label?" />
+                </paper-input-container>
+
+
+                <paper-input-container class="field">
+                    <label label>What is your <strong>First Name</strong>?</label>
+                    <input is="iron-input">
+                    <span class="help-block">And if we wanted to have a little help block here?</span>
+                </paper-input-container>
+
+
+                <paper-input-container class="field">
+                    <label label>What is your <strong>First Name</strong>?</label>
+                    <input is="iron-input">
+                    <span class="help-block">And if we wanted to have a little help block here?</span>
+                </paper-input-container>
+
+                <paper-input-container class="field">
+                    <label label>What is your <strong>First Name</strong>?</label>
+                    <input is="iron-input">
+                    <span class="help-block">And if we wanted to have a little help block here?</span>
+                </paper-input-container>
+
+                <paper-input-container  class="field">
+                    <span class="help-block">And if we wanted to have a little help block here?</span>
+                    <iron-autogrow-textarea placeholder="Why can't i have a label?" />
+                </paper-input-container>
+
+
+            </form>
+
+        </div>
+    </template>
+    <script>
+        Polymer({
+            is : 'x-publisher',
+            behaviors: [
+                Polymer.PaperDialogBehavior
+            ],
+            attached: function(){
+                //console.log(this.subpage)
+            }
+        })
+    </script>
+</dom-module>

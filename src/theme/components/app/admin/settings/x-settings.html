@@ -1,0 +1,31 @@
+<dom-module id="x-settings">
+    <template>
+        <style>
+            :host {}
+        </style>
+        <app-route
+                route="{{route}}"
+                pattern="/:group"
+                data="{{settings}}"
+                tail="{{grouptail}}">
+        </app-route>
+
+        <iron-pages attr-for-selected="sub-path" selected="[[settings.group]]">
+
+            <div sub-path="configuration">
+                Configuraion
+            </div>
+
+        </iron-pages>
+
+
+    </template>
+    <script>
+        Polymer({
+            is : 'x-settings',
+            attached: function(){
+                //console.log(this.subpage)
+            }
+        })
+    </script>
+</dom-module>

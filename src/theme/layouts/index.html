@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>floorstreet</title>
+    <link rel="stylesheet" href="/theme/styles/main.css"/>
+    <script data-main="/theme/config.js" src="/theme/require.js"></script>
+    <link rel="import" href="/theme/components/components.html"/>
 </head>
-<body>
+<body class="fullbleed layout vertical">
 
+    <div id="preloader">
+        <div class="splash">
+            <div class="splash-cube1 splash-cube"></div>
+            <div class="splash-cube2 splash-cube"></div>
+            <div class="splash-cube4 splash-cube"></div>
+            <div class="splash-cube3 splash-cube"></div>
+        </div>
+    </div>
+
+    <template is="dom-bind">
+
+        <x-data page={{page}} json='[@data]'>
+            <x-app page="{{page}}" id="app"></x-app>
+        </x-data>
+
+    </template>
+
+    <script>
+        require(['config'], function(){
+            require(['application']);
+        });
+    </script>
 </body>
 </html>

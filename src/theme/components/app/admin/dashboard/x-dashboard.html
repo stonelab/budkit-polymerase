@@ -1,0 +1,23 @@
+<dom-module id="x-dashboard">
+    <template>
+        <style>
+            :host {}
+        </style>
+
+
+
+        <section data-route="dashboard" tabindex="-1">
+            This is the dashboard
+        </section>
+
+
+    </template>
+    <script>
+        Polymer({
+            is : 'x-dashboard',
+            attached: function(){
+                console.log(this.page)
+            }
+        })
+    </script>
+</dom-module>

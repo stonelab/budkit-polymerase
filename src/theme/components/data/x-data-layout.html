@@ -1,0 +1,107 @@
+<!--https://medium.com/@_jh3y/how-to-pure-css-masonry-layouts-a8ede07ba31a#.z02dlcge3-->
+<dom-module id="x-data-layout">
+
+
+    <template>
+        <style>
+            :host{
+                display: flex;
+            }
+
+            .data-grid{
+
+                box-sizing: border-box;
+                padding: 5px;
+                display: flex;
+
+                @apply(--layout-horizontal);
+                @apply(--layout-wrap);
+                @apply(--layout-center);
+
+            }
+
+            .data-grid .data-item{
+                margin: 5px;
+                min-height: 250px;
+                background: #EFEDED;
+                @apply(--layout-inline);
+                flex: 0 0 calc(20% - 10px);
+
+            }
+
+
+
+        </style>
+
+
+        <div class="data-grid  horizontal layout flex">
+            <div class="data-item flex-3">
+                <div class="data-content">
+                    item 1
+                </div>
+            </div>
+            <div class="data-item flex-3">
+                <div class="data-content">
+                    item 1
+                </div>
+            </div>
+            <div class="data-item flex-3">
+                <div class="data-content">
+                    item 1
+                </div>
+            </div>
+            <div class="data-item flex-3">
+                <div class="data-content">
+                    item 1
+                </div>
+            </div>
+            <div class="data-item  flex-3">
+                <div class="data-content">
+                    item 1
+                </div>
+            </div>
+            <div class="data-item  flex-3">
+                <div class="data-content">
+                    item 1
+                </div>
+            </div>
+            <div class="data-item  flex-3">
+                <div class="data-content">
+                    item 1
+                </div>
+            </div>
+            <div class="data-item  flex-3">
+                <div class="data-content">
+                    item 1
+                </div>
+            </div>
+            <div class="data-item  flex-3">
+                <div class="data-content">
+                    item 1
+                </div>
+            </div>
+            <div class="data-item  flex-3">
+                <div class="data-content">
+                    item 1
+                </div>
+            </div>
+
+            <div class="data-item  flex-3">
+                <div class="data-content">
+                    item 1
+                </div>
+            </div>
+            <div class="data-item  flex-3">
+                <div class="data-content">
+                    item 1
+                </div>
+            </div>
+
+        </div>
+    </template>
+    <script>
+        Polymer({
+            is: 'x-data-layout'
+        })
+    </script>
+</dom-module>

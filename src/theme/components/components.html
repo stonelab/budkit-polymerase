@@ -1,0 +1,88 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!-- Iron elements -->
+<link rel="import" href="../vendor/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../vendor/iron-icons/iron-icons.html">
+<link rel="import" href="../vendor/iron-icons/maps-icons.html">
+<link rel="import" href="../vendor/iron-pages/iron-pages.html">
+<link rel="import" href="../vendor/iron-selector/iron-selector.html">
+<link rel="import" href="../vendor/iron-form/iron-form.html">
+<link rel="import" href="../vendor/iron-autogrow-textarea/iron-autogrow-textarea.html">
+
+<!-- Paper elements -->
+<link rel="import" href="../vendor/paper-search/paper-search.html" />
+<link rel="import" href="../vendor/paper-input/paper-input.html" />
+<link rel="import" href="../vendor/paper-drawer-panel/paper-drawer-panel.html" />
+<link rel="import" href="../vendor/paper-icon-button/paper-icon-button.html" />
+<link rel="import" href="../vendor/paper-item/paper-item.html" />
+<link rel="import" href="../vendor/paper-material/paper-material.html" />
+
+<link rel="import" href="../vendor/paper-scroll-header-panel/paper-scroll-header-panel.html" />
+<link rel="import" href="../vendor/paper-styles/typography.html" />
+<link rel="import" href="../vendor/paper-toast/paper-toast.html" />
+<link rel="import" href="../vendor/paper-toolbar/paper-toolbar.html" />
+<link rel="import" href="../vendor/paper-tabs/paper-tabs.html" />
+<link rel="import" href="../vendor/paper-toggle-button/paper-toggle-button.html" />
+<link rel="import" href="../vendor/paper-tooltip/paper-tooltip.html" />
+<link rel="import" href="../vendor/paper-badge/paper-badge.html" />
+<link rel="import" href="../vendor/paper-card/paper-card.html" />
+<link rel="import" href="../vendor/paper-fab/paper-fab.html" />
+
+<!-- Google web components -->
+<link rel="import" href="../vendor/google-map/google-map-elements.html" />
+
+<!-- Uncomment next block to enable Service Worker Support (2/2) -->
+<!--
+<link rel="import" href="../vendor/platinum-sw/platinum-sw-cache.html">
+<link rel="import" href="../vendor/platinum-sw/platinum-sw-register.html">
+-->
+
+<!-- Routing components -->
+<link rel="import" href="../vendor/app-route/app-location.html" />
+<link rel="import" href="../vendor/app-route/app-route.html" />
+
+
+<!-- Add your elements here -->
+<link rel="import" href="../styles/app-theme.html" />
+<link rel="import" href="../styles/shared-styles.html" />
+
+
+<!-- Import app components -->
+<link rel="import" href="app/x-app.html" />
+<link rel="import" href="data/x-data.html" />
+<link rel="import" href="data/x-data-layout.html" />
+
+
+<dom-module id="x-logo">
+    <template>
+        <style>
+            #logo{
+                fill: white;
+                @apply(--x-logo);
+            }
+        </style>
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="153px" height="28px" viewBox="0 0 153 28" version="1.1">
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="logo">
+                    <path d="M6.548,0.8 C8.54267664,0.8 9.97066236,1.37799422 10.832,2.534 C11.5800037,3.5540051 11.954,5.17465556 11.954,7.396 C11.954,10.5693492 11.2966732,12.5413295 9.982,13.312 C11.5686746,14.2186712 12.362,16.6553135 12.362,20.622 C12.3846668,21.95934 12.2373349,23.2003276 11.92,24.345 C11.6026651,25.4896724 11.2060024,26.2999976 10.73,26.776 C9.91399592,27.5920041 8.44067732,28 6.31,28 L0.36,28 L0.36,0.8 L6.548,0.8 Z M3.862,11.816 L6.616,11.816 C7.84000612,11.816 8.452,10.5240129 8.452,7.94 C8.452,6.78399422 8.38400068,5.95666916 8.248,5.458 C7.99866542,4.46066168 7.45467086,3.962 6.616,3.962 L3.862,3.962 L3.862,11.816 Z M3.862,24.838 L6.718,24.838 C7.71533832,24.838 8.3273322,24.2600058 8.554,23.104 C8.62200034,22.7639983 8.656,21.7893414 8.656,20.18 C8.656,16.7119827 8.04400612,14.978 6.82,14.978 L3.862,14.978 L3.862,24.838 Z M21.168,10.524 L20.08,16.814 L22.358,16.814 L21.168,10.524 Z M22.664,0.8 L28.308,28 L24.738,28 L23.106,20.554 L19.23,20.554 L17.496,28 L13.892,28 L19.672,0.8 L22.664,0.8 Z M33.68,12.156 L35.89,12.156 C37.6126753,12.156 38.474,10.7960136 38.474,8.076 C38.474,5.33331962 37.6126753,3.962 35.89,3.962 L33.68,3.962 L33.68,12.156 Z M39.154,14.57 L42.35,28.068 L38.814,28.068 L35.788,15.318 L33.68,15.318 L33.714,28 L30.178,28 L30.178,0.8 L36.162,0.8 C37.4313397,0.8 38.5759949,1.10599694 39.596,1.718 C41.3640088,2.98733968 42.248,5.16331792 42.248,8.246 C42.248,9.7193407 41.9420031,11.0453274 41.33,12.224 C40.8539976,13.1760048 40.2760034,13.855998 39.596,14.264 C39.4826661,14.3546671 39.3353342,14.4566661 39.154,14.57 L39.154,14.57 Z M51.802,28 L48.164,28 L48.164,3.962 L44.05,3.962 L44.05,0.8 L55.542,0.8 L55.542,3.962 L51.802,3.962 L51.802,28 Z M57.582,0.8 L68.02,0.8 L68.02,3.962 L61.084,3.962 L61.084,11.816 L65.096,11.816 L65.096,14.978 L61.084,14.978 L61.084,24.838 L68.36,24.838 L68.36,28 L57.582,28 L57.582,0.8 Z M73.902,12.156 L76.112,12.156 C77.8346753,12.156 78.696,10.7960136 78.696,8.076 C78.696,5.33331962 77.8346753,3.962 76.112,3.962 L73.902,3.962 L73.902,12.156 Z M79.376,14.57 L82.572,28.068 L79.036,28.068 L76.01,15.318 L73.902,15.318 L73.936,28 L70.4,28 L70.4,0.8 L76.384,0.8 C77.6533397,0.8 78.7979949,1.10599694 79.818,1.718 C81.5860088,2.98733968 82.47,5.16331792 82.47,8.246 C82.47,9.7193407 82.1640031,11.0453274 81.552,12.224 C81.0759976,13.1760048 80.4980034,13.855998 79.818,14.264 C79.7046661,14.3546671 79.5573342,14.4566661 79.376,14.57 L79.376,14.57 Z" id="BARTER"></path>
+                    <path d="M93.76,4.28 C93.76,3.346662 94.2199954,2.88 95.14,2.88 C95.9933376,2.88 96.4666662,3.3866616 96.56,4.4 L98.58,4.4 C98.513333,3.4133284 98.2266692,2.6133364 97.72,2 C97.119997,1.2533296 96.2800054,0.88 95.2,0.88 C93.9866606,0.88 93.080003,1.2199966 92.48,1.9 C91.9733308,2.4866696 91.72,3.2666618 91.72,4.24 C91.72,5.906675 92.6599906,7.6799906 94.54,9.56 C95.1800032,10.22667 95.6399986,10.8066642 95.92,11.3 C96.2666684,11.9400032 96.44,12.6399962 96.44,13.4 C96.44,14.5200056 95.9866712,15.08 95.08,15.08 C94.6933314,15.08 94.3733346,14.9066684 94.12,14.56 C93.8666654,14.2133316 93.74,13.773336 93.74,13.24 L91.6,13.24 C91.6266668,14.373339 91.9266638,15.2933298 92.5,16 C93.0866696,16.7466704 93.879995,17.12 94.88,17.12 C96.0933394,17.12 97.0399966,16.7466704 97.72,16 C98.320003,15.33333 98.62,14.5200048 98.62,13.56 C98.62,12.5866618 98.4666682,11.7466702 98.16,11.04 C97.7466646,10.1199954 96.9600058,9.060006 95.8,7.86 C95.1733302,7.2199968 94.7333346,6.7066686 94.48,6.32 C93.9999976,5.6266632 93.76,4.94667 93.76,4.28 L93.76,4.28 Z M104.18,17 L102.04,17 L102.04,2.86 L99.62,2.86 L99.62,1 L106.38,1 L106.38,2.86 L104.18,2.86 L104.18,17 Z" id="ST"></path>
+                </g>
+            </g>
+        </svg>
+    </template>
+    <script>
+        Polymer({
+            is : 'x-logo'
+        })
+    </script>
+</dom-module>
+
+

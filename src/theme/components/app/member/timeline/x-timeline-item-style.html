@@ -1,0 +1,53 @@
+
+<dom-module id="x-timeline-item-style">	
+<template>		
+<style>
+.feature {
+  margin: -10px -10px 10px;
+  position: relative;
+  width: 100%;
+  height: 100%; }
+  .feature * {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 10px; }
+
+.time {
+  vertical-align: middle; }
+
+.meta {
+  position: absolute;
+  bottom: 0px;
+  padding: 20px;
+  left: 0;
+  right: 0px; }
+
+.author {
+  display: inline-block;
+  vertical-align: middle; }
+  .author .icon {
+    position: relative;
+    margin: 0px 5px 0 0;
+    vertical-align: middle;
+    border-radius: 50%; }
+  .author .name {
+    vertical-align: middle; }
+
+.body {
+  display: block;
+  z-index: 1;
+  margin: 0 0 45px;
+  box-sizing: border-box;
+  padding: 20px; }
+
+:host(:hover) .body {
+  display: block; }
+
+/*# sourceMappingURL=x-timeline-item.css.map */
+		
+</style>	
+</template>
+</dom-module>

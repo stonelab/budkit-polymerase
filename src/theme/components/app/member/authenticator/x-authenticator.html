@@ -1,0 +1,188 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<dom-module id="x-authenticator">
+    <template>
+        <link rel="import" href="../../../../vendor/iron-form/iron-form.html">
+        <style>
+            :host {
+                display: inline;
+                box-sizing: border-box;
+                height: 100vh;
+            }
+
+            .x-authenticator-badge{
+                text-align: center;
+                margin: 40px auto 0px;
+            }
+
+            .x-authenticator-badge iron-image{
+                margin: auto;
+                border-radius: 50%;
+            }
+
+            .x-authenticator-fields{
+                padding: 40px;
+            }
+
+            .iron-selected{
+                outline: none;
+            }
+
+            .mini-profile span{
+                display: block;
+                margin: 10px auto;
+            }
+
+            paper-card {
+                --paper-card-background-color: white;
+
+                margin: 60px auto;
+                min-height: 350px;
+                width: 400px;
+                display: table;
+
+                @apply(--polymerase-authenticator-paper-card);
+            }
+
+            paper-input{
+
+            }
+
+            paper-button {
+                /*background: var(--primary-color);*/
+
+                    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+                    border: 1px solid var(--dark-primary-color);
+                    background-color: var(--default-primary-color);
+                    background-image: -webkit-linear-gradient(top, var(--default-primary-color), var(--dark-primary-color));
+
+                    text-transform: inherit;
+                    color: white;
+                    width: 100%;
+                    margin: 30px 0 0;
+                    display: block;
+                    font-size: 95%;
+                    text-align: center;
+                    font-weight: 600;
+
+            }
+
+
+            paper-button[disabled]{
+                border: 1px solid #f5f5f5;
+                background-color: #eee;
+                color: var(--paper-grey-600);
+                background-image: -webkit-linear-gradient(top, #eee, #eee);
+            }
+
+        </style>
+
+        <paper-header-panel mode="cover">
+
+            <paper-toolbar class="tall"> </paper-toolbar>
+
+            <div class="container-block">
+
+                <iron-pages attr-for-selected="data-route" selected="sign-in">
+                    <section data-route="sign-in" tabindex="-1">
+                        <paper-card elevation="0">
+
+                            <form is="iron-form" id="doSignInForm" on-change="_validate" method="post" action="/member/signin" disable-native-validation-ui>
+
+                                <div class="x-authenticator-badge">
+                                    <iron-image  width="100" height="100" preload src="http://lorempixel.com/100/100/people"></iron-image>
+
+
+                                    <div class="mini-profile" >
+                                        <span class="full-name">Livingstone Fultang</span>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="x-authenticator-fields">
+                                    <paper-input label="Username" error-message="Required username or email" auto-validate name="user_name_id" type="text" required></paper-input>
+                                    <paper-input label="Password" error-message="Please enter your password" name="user_password" type="password" required></paper-input>
+
+                                    <paper-button id="doSignInButton" disabled on-tap="_submit">Sign In</paper-button>
+                                </div>
+
+
+                                        <button type="submit" id="doSubmitSignInForm" name="submit" style="visibility:hidden;"></button>
+                                </form>
+
+                        </paper-card>
+
+                        Don't have an account?
+                    </section>
+
+                    <section data-route="sign-up" tabindex="-1">
+                        <div class="content cover">
+                            Sign up
+                        </div>
+                    </section>
+
+                    <section data-route="password-reset" tabindex="-1">
+                        <div class="content cover">
+                            Reset Password
+                        </div>
+                    </section>
+
+                </iron-pages>
+            </div>
+        </paper-header-panel>
+    </template>
+    <script>
+        Polymer({
+
+            is: 'x-authenticator',
+
+            properties : {},
+            // Element Lifecycle
+            ready: function() {
+                // `ready` is called after all elements have been configured, but
+                // propagates bottom-up. This element's children are ready, but parents
+                // are not.
+                //
+                // This is the point where you should make modifications to the DOM (when
+                // necessary), or kick off any processes the element wants to perform.
+
+                //var doSignInButton = this.$.doSignInButton ;
+
+            },
+            attached: function() {
+                // `attached` fires once the element and its parents have been inserted
+                // into a document.
+                //
+                // This is a good place to perform any work related to your element's
+                // visual state or active behavior (measuring sizes, beginning animations,
+                // loading resources, etc).
+            },
+            detached: function() {
+                // The analog to `attached`, `detached` fires when the element has been
+                // removed from a document.
+                //
+                // Use this to clean up anything you did in `attached`.
+            },
+            _submit: function(){
+
+                doSubmitSignInForm.click();
+
+            },
+            _validate: function(event){
+                //alert('validate');
+
+                //console.log(event.target.id)
+                this.$.doSignInButton.disabled = !this.$.doSignInForm.validate();
+
+            }
+        });
+    </script>
+</dom-module>

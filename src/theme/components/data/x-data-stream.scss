@@ -1,0 +1,131 @@
+
+:host{
+  display: block;
+  height: 100%;
+  position: relative;
+}
+
+.x-data-stream-content{
+  background: var(--secondary-background-color);
+  padding: 5px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.x-data-stream-aside{
+  background: white;
+  padding: 20px;
+  border-left: 1px solid #EFEDED
+}
+
+
+.x-data-stream-item {
+
+  clear: both;
+  margin-bottom: 20px;
+  padding-left: 70px;
+  position: relative;
+  min-height: 50px;
+
+  * {
+    vertical-align: top;
+
+  }
+
+  .feature{
+    //background-color: var(--default-primary-color);
+    min-height: 50%;
+  }
+
+  .icon {
+    position: absolute;
+    top: 0; left: 0 ;
+    margin: 0 20px 20px 0;
+    vertical-align: top;
+    border-radius: 50%;
+  }
+
+  .time{
+    color: var(--paper-grey-300);
+    vertical-align: middle;
+  }
+  .body{
+    margin-top: 10px;
+  }
+}
+
+
+.x-data-stream-content {
+
+  &.x-data-stream-grid {
+
+    box-sizing: border-box;
+    padding: 3px;
+    display: flex;
+    height: 100%;
+    max-height: 100vh;
+
+    @apply (--layout-horizontal);
+    @apply (--layout-wrap);
+    @apply (--layout-start);
+
+    .x-data-stream-item {
+
+      padding: 0px;
+      margin: 5px;
+      background: white;
+      flex:0 0 calc(33.333% - 10px);
+      min-height: 300px;
+      box-sizing: border-box;
+      position: relative;
+      @apply(--x-data-stream-item);
+
+    }
+  }
+}
+
+
+@media (min-width: 480px) and (max-width: 1100px) {
+
+  .x-data-stream-content {
+    &.x-data-stream-grid {
+      .x-data-stream-item {
+        flex: 0 0 calc(50% - 10px);
+        @apply(--x-data-stream-item-tablet);
+      }
+    }
+  }
+}
+
+/* mobile-small */
+@media all and (min-width: 0) and (max-width: 360px) and (orientation: portrait) {
+  .x-data-stream-content {
+    &.x-data-stream-grid {
+      .x-data-stream-item {
+        flex: 0 0 calc(100% - 10px);
+      }
+    }
+  }
+}
+/* mobile-large */
+@media all and (min-width: 361px) and (orientation: portrait) {
+  .x-data-stream-content {
+    &.x-data-stream-grid {
+      .x-data-stream-item {
+        flex: 0 0 calc(100% - 10px);
+      }
+    }
+  }
+}
+
+/* mobile-small-landscape */
+@media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) {
+  .x-data-stream-content {
+    &.x-data-stream-grid {
+      .x-data-stream-item {
+        flex: 0 0 calc(100% - 10px);
+      }
+    }
+  }
+}
+/* mobile-large-landscape */
+@media all and (min-width: 481px) and (orientation: landscape) { }

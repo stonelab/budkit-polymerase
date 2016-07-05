@@ -1,0 +1,159 @@
+<link rel="import" href="x-app-routes.html" />
+<link rel="import" href="x-app-menu.html" />
+<link rel="import" href="search/x-search.html" />
+<link rel="import" href="admin/x-admin.html" />
+<link rel="import" href="member/x-member.html" />
+<link rel="import" href="publisher/x-publisher.html" />
+<link rel="import" href="repository/x-repository.html" />
+<link rel="import" href="member/profile/x-profile-badge.html" />
+
+
+<dom-module id="x-app">
+
+    <template>
+
+        <style include="shared-styles">
+
+            @media (max-width: 960px) {
+                .container-block {
+                    right: 0px;
+                    left: 0px;
+                    border-radius: 0px;
+                }
+                paper-fab#publisher-btn{
+                    position: fixed;
+                }
+            }
+
+        </style>
+
+        <iron-media-query query="(min-width:960px)" query-matches="{{desktopWide}}"></iron-media-query>
+
+        <app-location route="{{route}}"></app-location>
+
+        <app-route
+                route="{{route}}"
+                pattern="/:view"
+                data="{{routeData}}"
+                tail="{{subroute}}">
+        </app-route>
+
+
+        <paper-scroll-header-panel fixed>
+
+            <paper-drawer-panel id="drawer-panel" responsive-width="960px">
+
+                <paper-header-panel drawer>
+
+                    <paper-toolbar class="tall">
+                        <x-logo class="top flex"></x-logo>
+                        <x-profile-badge class="bottom" width="45" height="45" profile="{{page.data.session.user}}"></x-profile-badge>
+                    </paper-toolbar>
+
+                    <!-- Sign in prompt -->
+                    <template is="dom-if" if="{{ ! page.data.session.user.user_name_id}}">
+                        <a href="/member/signin">Please sign in</a>
+                    </template>
+
+                    <!-- Drawer Content -->
+                    <x-app-menu page="{{page}}"></x-app-menu>
+
+                </paper-header-panel>
+                <paper-header-panel mode="cover" main>
+                    <paper-toolbar class="tall">
+
+                        <paper-icon-button id="signout-btn" class="top" icon="power-settings-new" on-tap="signOut" ></paper-icon-button>
+
+                        <paper-fab elevation="0" icon="add" class="bottom" id="publisher-btn"></paper-fab>
+
+                    </paper-toolbar>
+                    <div class="container-block">
+
+                        <paper-toolbar id="mainBar">
+
+                            <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+                            <x-search-bar page="{{page.data}}" label="Search" flex></x-search-bar>
+
+                        </paper-toolbar>
+
+                        <!--<paper-fab class="bottom" icon="icons:add-circle-outline" title="Post an ad"></paper-fab>-->
+                        <iron-pages id="components" attr-for-selected="data-route" selected="[[routeData.view]]" fallback-selection="member">
+
+                            <x-member data-route="member" route="{{subroute}}" page="{{page}}"></x-member>
+                            <x-admin data-route="admin" route="{{subroute}}" page="{{page}}"></x-admin>
+                            <x-repository data-route="repository" route="{{subroute}}" page="{{page}}"></x-repository>
+
+                        </iron-pages>
+
+                    </div>
+                </paper-header-panel>
+            </paper-drawer-panel>
+
+        </paper-scroll-header-panel>
+
+
+        <x-publisher id="publisher"  with-back-drop="false"> </x-publisher>
+
+    </template>
+    <script>
+        Polymer({
+            is: 'x-app',
+            properties: {
+                route: {
+                    type: Object,
+                    notify: true
+                },
+                desktopWide: {
+                    type: Boolean,
+                    observer: '_onDeskTopWideView'
+                }
+            },
+            observers: [
+                '__routePathChanged(route.path, page)'
+            ],
+            listeners: {
+                'publisher-btn.tap': '__showPublisher',
+            },
+            ready: function(){
+
+                console.log('budkit-polymerase is ready to rumble!');
+
+                //console.log(this.route)
+
+                preloader.classList.add('hidden');
+            },
+            /**
+             * Polymer CSS custom properties does not work inside @mediaqueries,
+             * Here we are listening to changes in size from iron-media-query
+             *
+             * @param deskTopWide
+             * @private
+             */
+            _onDeskTopWideView: function(deskTopWide){
+                if(deskTopWide){
+                    this.$.mainBar.customStyle['--paper-toolbar-content'] = 'padding: 0 0px';
+                    this.$.mainBar.updateStyles();
+                }else{
+                    this.$.mainBar.customStyle['--paper-toolbar-content'] = 'padding: 0 16px';
+                    this.$.mainBar.updateStyles();
+                }
+            },
+            __routePathChanged(location, page){
+
+//                console.log(location);
+//                console.log(page);
+//
+//                console.log('route changed');
+            },
+            __showPublisher(e){
+                this.$.publisher.toggle();
+                //console.log(this.$.publisher);
+            },
+            signOut: function(){
+
+                window.location  = '/member/signout'
+
+            }
+        })
+    </script>
+</dom-module>

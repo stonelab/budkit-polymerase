@@ -1,0 +1,38 @@
+<link rel="import" href="x-timeline-item-style.html">
+<dom-module id="x-timeline-item">
+    <template>
+
+        <style include="x-typography-style"></style>
+        <style include="x-timeline-item-style"></style>
+        <div class="feature">
+            <div class="media">
+
+            </div>
+        </div>
+
+        <div class="meta">
+            <a class="author" href="#">
+                <iron-image class="icon"  width="32" height="32" preload src$="/file/{{item.value.edgeData.story_author.user_photo}}/32x32"></iron-image>
+                <span class="name">Livingstone Fultang</span>
+            </a>
+            <span class="time paper-font-headline">1 hour ago</span>
+
+        </div>
+
+        <div class="body text-body">
+            {{item.value.edgeData.media_content}}
+        </div>
+
+    </template>
+    <script>
+        Polymer({
+            is : 'x-timeline-item',
+            properties:{
+                item:{
+                    type: Object,
+                    notifier: true
+                }
+            }
+        })
+    </script>
+</dom-module>

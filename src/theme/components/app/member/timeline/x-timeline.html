@@ -1,0 +1,121 @@
+<link rel="import" href="x-timeline-item.html" />
+<link rel="import" href="../../../data/x-data-stream.html" />
+<link rel="import" href="../../../../vendor/iron-ajax/iron-ajax.html" />
+
+<dom-module id="x-timeline">
+    <template>
+        <style>
+            :host {
+                display: block;
+                height: 100%;
+                position: relative;
+                --paper-toolbar-height :  54px;
+                --paper-toolbar-background: #EFEDED;
+                --paper-toolbar-color: var(--primary-text-color);
+
+                --paper-tabs : {
+                    background: white;
+                }
+            }
+
+            paper-scroll-header-panel{
+                --paper-drawer-panel-main-container: {
+                    background: white;
+                }
+            }
+
+            paper-tab{
+                min-width: 80px;
+            }
+
+            paper-drawer-panel{
+                top: 0px;
+                bottom:0px;
+                height: auto;
+                --paper-drawer-panel-main-container : {
+                    position: relative;
+                    background: white;
+                }
+            }
+
+            paper-tabs + paper-drawer-panel{
+                top: 48px;
+            }
+        </style>
+
+
+        <iron-ajax
+                id="xhrRequest"
+                url="/member/timeline.json"
+                handle-as="json"
+                on-response="handleResponse"
+                debounce-duration="300"></iron-ajax>
+
+
+        <paper-tabs selected="0" noink scrollable hide-scroll-buttons>
+
+            <paper-tab>
+                <span id="everything-tab">Everything</span>
+            </paper-tab>
+            <paper-tab>
+                <span id="tickets">Accommodation</span>
+            </paper-tab>
+            <paper-tab>Travel </paper-tab>
+            <paper-tab>Food </paper-tab>
+            <paper-tab>Motors </paper-tab>
+            <paper-tab>Entertainment </paper-tab>
+            <paper-tab>Health </paper-tab>
+            <paper-tab>Education </paper-tab>
+            <paper-tab>Legal </paper-tab>
+
+
+        </paper-tabs>
+
+
+        <paper-drawer-panel id="timeline" right-drawer force-narrow>
+
+            <x-data-stream stream="{{stories}}" main>
+                <template class="repeated">
+                    <x-timeline-item item="{{item}}"></x-timeline-item>
+                </template>
+            </x-data-stream>
+
+            <div class="x-data-stream-aside" drawer>
+                Drawer
+            </div>
+
+        </paper-drawer-panel>
+
+
+    </template>
+    <script>;
+        Polymer({
+            is: 'x-timeline',
+            properties: {
+                stories: {
+                    type: Object,
+                    value: {},
+                    notify: true
+                },
+                route:{
+                    type: Object,
+                    observer: '_loadStories',
+                }
+            },
+            _loadStories:function(route){
+
+                //Only load stories when the route is at this prefix
+                if(route.prefix == '/member/timeline') {
+                    //console.log('checking for stories' + Object.keys(stories).length)
+                    if (!this.stories || Object.keys(this.stories).length < 1) {
+                        this.$.xhrRequest.generateRequest();
+                    }
+                }
+
+            },
+            handleResponse: function(e, d){
+                this.set('stories', d.response.stories);
+            }
+        })
+    </script>
+</dom-module>

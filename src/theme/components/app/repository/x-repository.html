@@ -1,0 +1,43 @@
+
+
+<dom-module id="x-repository">
+    <template>
+        <style>
+            :host {
+                --x-data-stream-item : {
+                    flex:0 0 calc(20% - 10px);
+                    min-height: 200px;
+                }
+            }
+        </style>
+        <app-route
+                route="{{route}}"
+                pattern="/:path"
+                data="{{subpage}}"
+                tail="{{subpageroute}}">
+        </app-route>
+
+        <iron-pages attr-for-selected="sub-path" selected="[[subpage.path]]" fallback-selection="list">
+
+            <div sub-path="list">
+                <x-data-stream stream="{{0,2,3,5}}" main>
+                    <template class="repeated">
+
+                    </template>
+                </x-data-stream>
+
+            </div>
+
+        </iron-pages>
+
+
+    </template>
+    <script>
+        Polymer({
+            is : 'x-repository',
+            attached: function(){
+                //console.log(this.subpage)
+            }
+        })
+    </script>
+</dom-module>

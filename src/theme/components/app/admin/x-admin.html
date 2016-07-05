@@ -1,0 +1,38 @@
+<link rel="import" href="settings/x-settings.html" />
+<link rel="import" href="dashboard/x-dashboard.html" />
+
+<link rel="import" href="../member/x-member-list.html" />
+<link rel="import" href="../page/x-page-list.html" />
+
+<dom-module id="x-admin">
+    <template>
+        <style>
+            :host {}
+        </style>
+        <app-route
+                route="{{route}}"
+                pattern="/:path"
+                data="{{subpage}}"
+                tail="{{subpageroute}}">
+        </app-route>
+
+        <iron-pages attr-for-selected="sub-path" selected="[[subpage.path]]">
+
+            <x-dashboard sub-path="dashboard" route="{{subpageroute}}"></x-dashboard>
+            <x-settings sub-path="settings" route="{{subpageroute}}"></x-settings>
+            <x-member-list sub-path="members" route="{{subpageroute}}"></x-member-list>
+            <x-page-list sub-path="pages" route="{{subpageroute}}"></x-page-list>
+
+        </iron-pages>
+
+
+    </template>
+    <script>
+        Polymer({
+            is : 'x-admin',
+            attached: function(){
+                //console.log(this.subpage)
+            }
+        })
+    </script>
+</dom-module>

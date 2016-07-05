@@ -1,0 +1,170 @@
+<link rel="import" href="../vendor/polymer/polymer.html">
+<link rel="import" href="../vendor/paper-styles/typography.html">
+<link rel="import" href="x-typography-style.html" />
+
+<!-- shared styles for all elements and index.html -->
+<dom-module id="shared-styles">
+  <template>
+
+    <style>
+
+
+      .container-block{
+
+        display: flex;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+
+        flex-direction: column;
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+
+        flex: 1;
+        -ms-flex: 1 1 0.000000001px;
+        -webkit-flex: 1;
+
+        flex-basis: 0.000000001px;
+        -webkit-flex-basis: 0.000000001px;
+
+        position: absolute;
+        top: 0px; left:0px; right:95px; bottom: 0px;
+
+        overflow: hidden;
+        border-radius: 2px;
+        height: 100vh;
+
+      }
+
+      .content{
+        margin: 0;
+        padding: 20px;
+        position: relative;
+        box-sizing: border-box;
+      }
+
+
+
+      section{
+        height: 100%;
+        position: relative;
+      }
+
+      iron-pages{
+        position: absolute;
+        left: 0px; right: 0px;
+        top: 0; bottom: 0px;
+        background:  var(--secondary-background-color);
+      }
+
+
+      paper-toolbar ~ iron-pages {
+        top: 64px;
+      }
+
+      paper-fab#publisher-btn{
+        position: absolute;
+        z-index: 1;
+        right: 20px; bottom: 20px;
+      }
+
+      paper-scroll-header-panel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        --paper-scroll-header-container:{
+          position: static;
+        }
+      }
+
+      google-map{
+        position: absolute;
+        bottom: 10px; left:10px; right:10px; top: 10px;
+        height: auto;
+      }
+
+
+      paper-tabs{
+        background-color: #FAFAFA;
+      }
+
+      paper-tab{min-width: 100px; }
+
+      paper-tabs ~ google-map{
+        top: 48px;
+      }
+
+      paper-drawer-panel {
+        --paper-drawer-panel-main-container: {
+          background-color: var(--main-bg-color);
+        };
+        --paper-drawer-panel-left-drawer-container: {
+          background-color: var(--main-bg-color);
+
+        };
+      }
+
+      paper-header-panel{
+
+        --paper-header-panel-cover-container:{
+          position: static !important;
+        };
+        --paper-header-panel-shadow: {
+          box-shadow: none;
+        }
+      }
+
+      paper-menu {
+        --paper-menu-selected-item: {
+          /*color: white;*/
+        };
+        --paper-menu-focused-item-after: {
+          background: none;
+        }
+      }
+
+      paper-menu iron-icon {
+        margin-right: 15px;
+        margin-left: 10px;
+        opacity: 0.54;
+      }
+
+      paper-menu a {
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
+
+        text-decoration: none;
+        color: var(--menu-link-color);
+        font-family: 'Roboto', 'Noto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24px;
+        min-height: 48px;
+        padding: 0 16px;
+      }
+
+      paper-menu a > *, paper-menu paper-item > *, paper-menu paper-icon-item > * {
+        pointer-events: none;
+      }
+
+      paper-submenu paper-menu{
+
+          background-color: #292929
+      }
+
+      @media (max-width: 600px) {
+        .page-title {
+          font-size: 24px!important;
+        }
+
+          paper-toolbar ~ iron-pages {
+              top: 56px;
+          }
+
+      }
+    </style>
+  </template>
+</dom-module>
