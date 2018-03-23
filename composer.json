@@ -1,7 +1,7 @@
 {
     "name": "budkit/polymerase",
     "description": "A front-end app built with polymer",
-    "license": "GPLv3",
+    "license": "MIT",
     "authors": [
         {
             "name": "Livingstone Fultang",
