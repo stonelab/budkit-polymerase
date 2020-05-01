@@ -86,8 +86,12 @@ class Provider implements Service
 
         $response = $this->application->response;
         $request   = $this->application->request;
-        
-        //var_dump($request->getPathInfo()); die;
+    
+        $provider = $this->application->config->get("design.theme.provider");
+        $name  = $this->application->config->get("design.theme.name");
+
+        //Before providing overides, make sure this theme is being used
+        if($provider != "budkit/polymerase" || $name != "theme") return ;
 
         if( $response->getContentType() == "html" ) :
 
